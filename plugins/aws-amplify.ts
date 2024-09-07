@@ -7,7 +7,6 @@ export default defineNuxtPlugin(({$config}) => {
             Cognito: {
                 userPoolId: $config.public.userPoolId,
                 userPoolClientId: $config.public.userPoolClientId,
-                
             }
         }
     })

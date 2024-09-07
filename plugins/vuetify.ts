@@ -45,7 +45,7 @@ export default defineNuxtPlugin(({ vueApp }) => {
         },
         directives,
         theme: {
-            defaultTheme: "DARK_AQUA_THEME",
+            defaultTheme: "BLUE_THEME",
             themes: {
                 BLUE_THEME,
                 AQUA_THEME,
