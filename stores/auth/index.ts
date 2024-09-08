@@ -1,12 +1,9 @@
-
-import type { ITokens } from "~/types/store/auth";
 import {
     signIn,
     confirmSignIn,
     type SignInInput,
     type ConfirmSignInInput,
     fetchUserAttributes,
-    fetchAuthSession,
     signOut,
     resetPassword,
     type ResetPasswordOutput,
@@ -18,11 +15,9 @@ export const useAuthStore = defineStore({
     id: "auth",
     state: () => {
         const storedUserSession = localStorage.getItem('userSession');
-        const storedGroups = localStorage.getItem('groups');
         const storedloggedIn = localStorage.getItem('loggedIn');
         return {
             userSession: storedUserSession ? JSON.parse(storedUserSession) : {},
-            groups: storedGroups ? JSON.parse(storedGroups) : [],
             isAuthenticated: storedloggedIn ? JSON.parse(storedloggedIn) : false,
         }
     },
@@ -46,29 +41,17 @@ export const useAuthStore = defineStore({
             const user = await fetchUserAttributes();
             this.userSession = user
             localStorage.setItem('userSession', JSON.stringify(user))
-
-            const authSession = await fetchAuthSession();
-            const tokens = authSession?.tokens as ITokens | undefined;
-
-            const groupUserLogado = tokens?.idToken.payload["cognito:groups"];
-            if (!groupUserLogado) {
-                this.groups = [];
-                return;
-            }
-
-            this.groups = groupUserLogado;
-            localStorage.setItem('groups', JSON.stringify(groupUserLogado));
         },
 
         async HANDLE_SIGN_OUT() {
             await signOut();
             this.userSession = {},
-                this.groups = [],
+               
                 this.isAuthenticated = false,
 
                 localStorage.removeItem('loggedIn')
             localStorage.removeItem('userSession')
-            localStorage.removeItem('groups')
+           
         },
 
         async FORGOT_PASSWORD(username: string) {
