@@ -101,6 +101,7 @@ const confirmSignIn = async () => {
 
 <template>
   <div class="authentication">
+    <h1>TUANE MY LOVE</h1>
     <v-container fluid class="pa-3">
       <v-row class="h-100vh d-flex justify-center align-center">
         <v-col cols="12" class="d-flex align-center">
