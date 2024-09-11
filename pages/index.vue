@@ -2,5 +2,8 @@
 const { userSession } = useAuthStore();
 </script>
 <template>
-  <div>Olá, {{ userSession.email }}!</div>
+  <div>
+    <div>Olá, {{ userSession.email }}!</div>
+    <div>Bem vindo ao <v-icon>mdi-cow</v-icon></div>
+  </div>
 </template>

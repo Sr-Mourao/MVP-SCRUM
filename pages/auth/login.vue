@@ -171,6 +171,18 @@ const confirmSignIn = async () => {
                       >Entrar</v-btn
                     >
                   </v-form>
+                  <h6
+                    class="text-h6 d-flex align-center mt-6 font-weight-medium"
+                  >
+                    Primeira vez aqui?
+                    <v-btn
+                      class="pl-0 text-primary text-body-1 opacity-1 pl-2 font-weight-medium"
+                      height="auto"
+                      to="/auth/register"
+                      variant="plain"
+                      >Inscrever-se
+                    </v-btn>
+                  </h6>
                 </v-tabs-window-item>
                 <v-tabs-window-item value="tab-new-password">
                   <div
