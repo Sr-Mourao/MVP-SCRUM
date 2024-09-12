@@ -5,7 +5,7 @@ definePageMeta({
 
 import type { VForm } from "vuetify/components/VForm";
 
-const { LOGIN, CONFIRM_SIGN_UP, FETCH_INFO_USER_SESSION } = useAuthStore();
+const { LOGIN, CONFIRM_SIGN_IN, FETCH_INFO_USER_SESSION } = useAuthStore();
 const { $toast } = useNuxtApp();
 const { push } = useRouter();
 const formSignIn = ref<VForm | null>(null);
@@ -85,7 +85,7 @@ const confirmSignIn = async () => {
 
   loadingConfirmSignIn.value = true;
   try {
-    const data = await CONFIRM_SIGN_UP({ challengeResponse });
+    const data = await CONFIRM_SIGN_IN({ challengeResponse });
     if (data.signInStep === "DONE") {
       await FETCH_INFO_USER_SESSION();
       push({ path: "/" });

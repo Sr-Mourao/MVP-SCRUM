@@ -1,14 +1,19 @@
 import {
+    autoSignIn,
     signIn,
-    confirmSignIn,
-    type SignInInput,
-    type ConfirmSignInInput,
-    fetchUserAttributes,
     signOut,
+    signUp,
+    confirmSignUp,
+    confirmSignIn,
     resetPassword,
+    fetchUserAttributes,
+    confirmResetPassword,
+    type SignInInput,
+    type SignUpInput,
+    type ConfirmSignInInput,
+    type ConfirmSignUpInput, 
     type ResetPasswordOutput,
     type ConfirmResetPasswordInput,
-    confirmResetPassword,
 } from 'aws-amplify/auth';
 
 export const useAuthStore = defineStore({
@@ -25,12 +30,27 @@ export const useAuthStore = defineStore({
     getters: {},
 
     actions: {
+
+        async SIGN_UP(newUser: SignUpInput) {
+            const data = await signUp(newUser)
+            return data
+        },
+
+        async CONFIRM_SIGN_UP(challengeResponse: ConfirmSignUpInput) {
+            const data = await confirmSignUp(challengeResponse)
+            return data
+        },
+
+        async AUTO_SIGN_IN(){
+            await autoSignIn()
+        },
+
         async LOGIN({ username, password }: SignInInput) {
             const data = await signIn({ username, password })
             return data
         },
 
-        async CONFIRM_SIGN_UP(challengeResponse: ConfirmSignInInput) {
+        async CONFIRM_SIGN_IN(challengeResponse: ConfirmSignInInput) {
             const { nextStep } = await confirmSignIn(challengeResponse)
             return nextStep
         },
