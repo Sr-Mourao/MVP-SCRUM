@@ -30,8 +30,8 @@ const signOut = async () => {
       <div class="px-8 pt-6">
         <h6 class="text-h5 font-weight-medium">Perfil do Usuário</h6>
         <div class="d-flex align-center mt-4 pb-6">
-          <v-avatar size="50" color="primary">
-            <img src="/images/profile/user-1.jpg" width="35" alt="Julia" />
+          <v-avatar size="80">
+            <img src="/images/profile/user-1.jpg" width="80" />
           </v-avatar>
 
           <div class="ml-3">
@@ -48,6 +48,29 @@ const signOut = async () => {
         </div>
         <v-divider></v-divider>
       </div>
+      <perfect-scrollbar>
+        <v-list class="py-0 theme-list" lines="two">
+          <v-list-item class="py-4 px-8 custom-text-primary" to="/profile/edit">
+            <template v-slot:prepend>
+              <v-avatar size="48" color="lightprimary" rounded="md">
+                <v-img
+                  src="/images/svgs/icon-account.svg"
+                  width="20"
+                  alt="/images/svgs/icon-account.svg"
+                />
+              </v-avatar>
+            </template>
+            <div>
+              <h6 class="text-subtitle-1 font-weight-bold mb-2 custom-title">
+                Meu perfil
+              </h6>
+            </div>
+            <p class="text-subtitle-1 font-weight-regular textSecondary">
+              Configurações de perfil
+            </p>
+          </v-list-item>
+        </v-list>
+      </perfect-scrollbar>
       <div class="pt-4 pb-6 px-8 text-center">
         <v-btn
           prepend-icon="mdi-cog"

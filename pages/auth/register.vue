@@ -16,6 +16,8 @@ const fname = ref("");
 const registerTabs = ref("tab-register");
 const confirmationCode = ref("");
 const show = ref(false);
+const loadingSignUp = ref(false);
+const loadingConfirmSignUp = ref(false);
 // rules
 const passwordRules = ref([
   (v: string) => {
@@ -54,6 +56,7 @@ const signUp = async () => {
       },
     },
   };
+  loadingSignUp.value = true;
   try {
     const { nextStep } = await SIGN_UP(newUser);
     if (nextStep.signUpStep === "DONE") {
@@ -72,10 +75,13 @@ const signUp = async () => {
     }
     console.error(error);
     $toast.error(`Ops... Houve um erro: ${error.message}`);
+  } finally {
+    loadingSignUp.value = false;
   }
 };
 
 const confirmSignUp = async () => {
+  loadingConfirmSignUp.value = true;
   try {
     const { nextStep } = await CONFIRM_SIGN_UP({
       username: email.value,
@@ -88,6 +94,8 @@ const confirmSignUp = async () => {
     }
   } catch (error) {
     console.error(error);
+  } finally {
+    loadingConfirmSignUp.value = false;
   }
 };
 </script>
@@ -140,6 +148,7 @@ const confirmSignUp = async () => {
                       size="large"
                       class="mt-3"
                       color="primary"
+                      :loading="loadingSignUp"
                       block
                       submit
                       flat
@@ -165,15 +174,23 @@ const confirmSignUp = async () => {
                   </p>
                   <h6 class="text-subtitle-1 font-weight-bold text-center">
                     Email: {{ email }}
+                    <v-tooltip text="Editar Inscrição">
+                      <template v-slot:activator="{ props }">
+                        <v-btn
+                          size="20"
+                          icon="mdi-square-edit-outline"
+                          variant="text"
+                          v-bind="props"
+                          @click="registerTabs = 'tab-register'"
+                        ></v-btn>
+                      </template>
+                    </v-tooltip>
                   </h6>
-                  <p class="text-subtitle-1 text-center text-13">
-                    Digite o código do email no campo abaixo.
-                  </p>
 
                   <v-form>
-                    <div class="mt-sm-13">
+                    <div class="mt-5">
                       <v-label
-                        class="text-subtitle-1 font-weight-semibold pb-2 text-lightText"
+                        class="d-flex justify-center text-subtitle-1 font-weight-semibold pb-2 text-lightText"
                         >Digite seu código de segurança de 6 dígitos</v-label
                       >
                       <v-otp-input
@@ -184,6 +201,7 @@ const confirmSignUp = async () => {
                         size="large"
                         class="mt-3"
                         color="primary"
+                        :loading="loadingConfirmSignUp"
                         block
                         submit
                         flat
