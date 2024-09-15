@@ -103,7 +103,7 @@ const confirmSignIn = async () => {
   <div class="authentication">
     <v-container fluid class="pa-3">
       <v-row class="h-100vh d-flex justify-center align-center">
-        <v-col cols="12" class="d-flex align-center">
+        <v-col cols="12" lg="4" xl="5" class="d-flex align-center">
           <v-card
             rounded="md"
             elevation="10"

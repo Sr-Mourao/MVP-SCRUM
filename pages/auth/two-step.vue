@@ -38,7 +38,7 @@ const confirmResetPassword = async () => {
 <template>
   <div class="authentication">
     <v-container fluid class="pa-3">
-      <v-row class="d-flex justify-center align-center">
+      <v-row class="h-100vh d-flex justify-center align-center">
         <v-col cols="12" lg="4" xl="5" class="d-flex align-center">
           <v-card
             rounded="md"
@@ -57,11 +57,11 @@ const confirmResetPassword = async () => {
               <p class="text-subtitle-1 text-center text-13">
                 Digite o código do email no campo abaixo.
               </p>
-
+              <v-divider class="mt-3"></v-divider>
               <!---Form---->
-              <div class="mt-sm-13">
+              <div class="mt-3">
                 <v-label
-                  class="text-subtitle-1 font-weight-semibold pb-2 text-lightText"
+                  class="d-flex justify-center text-subtitle-1 font-weight-semibold pb-2 text-lightText"
                   >Digite seu código de segurança de 6 dígitos</v-label
                 >
                 <Form @submit="confirmResetPassword" v-slot="{ isSubmitting }">

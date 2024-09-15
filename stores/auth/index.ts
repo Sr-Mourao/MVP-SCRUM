@@ -6,12 +6,14 @@ import {
     confirmSignUp,
     confirmSignIn,
     resetPassword,
+    updatePassword,
     fetchUserAttributes,
     confirmResetPassword,
     type SignInInput,
     type SignUpInput,
     type ConfirmSignInInput,
     type ConfirmSignUpInput, 
+    type UpdatePasswordInput,
     type ResetPasswordOutput,
     type ConfirmResetPasswordInput,
 } from 'aws-amplify/auth';
@@ -100,6 +102,10 @@ export const useAuthStore = defineStore({
             newPassword
         }: ConfirmResetPasswordInput) {
             await confirmResetPassword({ username, confirmationCode, newPassword });
+        },
+
+        async UPDATE_PASSWORD({ oldPassword, newPassword }: UpdatePasswordInput) {
+            await updatePassword({ oldPassword, newPassword });
         },
     }
 })

@@ -66,20 +66,35 @@ const signOut = async () => {
               </h6>
             </div>
             <p class="text-subtitle-1 font-weight-regular textSecondary">
-              Configurações de perfil
+              Configurações de Conta
+            </p>
+          </v-list-item>
+          <v-list-item
+            class="py-4 px-8 custom-text-primary"
+            to="/customizacao/sistema"
+          >
+            <template v-slot:prepend>
+              <v-avatar size="48" color="lightprimary" rounded="md">
+                <v-img
+                  src="/images/svgs/icon-dd-application.svg"
+                  width="20"
+                  alt="/images/svgs/icon-briefcase.svg"
+                />
+              </v-avatar>
+            </template>
+            <div>
+              <h6 class="text-subtitle-1 font-weight-bold mb-2 custom-title">
+                Layout
+              </h6>
+            </div>
+            <p class="text-subtitle-1 font-weight-regular textSecondary">
+              Customizar Sistema
             </p>
           </v-list-item>
         </v-list>
       </perfect-scrollbar>
-      <div class="pt-4 pb-6 px-8 text-center">
-        <v-btn
-          prepend-icon="mdi-cog"
-          color="info"
-          variant="outlined"
-          block
-          to="/customizacao/sistema"
-          >Customizar sistema</v-btn
-        >
+      <div class="px-7 pb-6">
+        <v-divider></v-divider>
       </div>
       <div class="pb-6 px-8 text-center">
         <v-btn
