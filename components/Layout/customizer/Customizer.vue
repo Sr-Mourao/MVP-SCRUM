@@ -5,6 +5,7 @@ import { useCustomizerStore } from "@/stores/customizer";
 import {
   CheckIcon,
   LayoutColumnsIcon,
+  LayoutSidebarIcon,
   LayoutDistributeHorizontalIcon,
   LayoutDistributeVerticalIcon,
   LayoutNavbarIcon,

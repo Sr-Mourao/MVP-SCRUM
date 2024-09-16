@@ -1,7 +1,8 @@
 import {
     HomeIcon,
-    BrandShopeeIcon,
-    AddressBookIcon,
+    UsersGroupIcon,
+    Book2Icon,
+    SettingsCogIcon
 } from 'vue-tabler-icons';
 
 export interface menu {
@@ -28,6 +29,21 @@ const horizontalItems: menu[] = [
         icon: HomeIcon,
         to: '/',
     },
+    {
+        title: 'Projetos',
+        icon: Book2Icon,
+        to: '/projects',
+    },
+    {
+        title: 'Time',
+        icon: UsersGroupIcon,
+        to: '/team',
+    },
+    {
+        title: 'Configuração Organização',
+        icon: SettingsCogIcon,
+        to: '/organizations/settings',
+      },
 ];
 
 export default horizontalItems;

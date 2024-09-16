@@ -1,7 +1,8 @@
 import {
   LayoutDashboardIcon,
-  AddressBookIcon,
-  BuildingIcon
+  BooksIcon,
+  UsersGroupIcon,
+  SettingsCogIcon
 } from "vue-tabler-icons";
 
 export interface menu {
@@ -26,7 +27,22 @@ const sidebarItem: menu[] = [
     title: 'DashBoard',
     icon: LayoutDashboardIcon,
     to: '/'
-  }
+  },
+  {
+    title: 'Projetos',
+    icon: BooksIcon,
+    to: '/projects',
+},
+{
+  title: 'Time',
+  icon: UsersGroupIcon,
+  to: '/team',
+},
+{
+  title: 'Configuração Organização',
+  icon: SettingsCogIcon,
+  to: '/organizations/settings',
+},
 ];
 
 export default sidebarItem;

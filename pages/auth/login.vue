@@ -64,7 +64,7 @@ const signIn = async () => {
       return;
     }
     await FETCH_INFO_USER_SESSION();
-    push({ path: "/" });
+    push({ path: "/organizations" });
   } catch (error) {
     console.error(error);
     $toast.error("Senha ou email incorretos.");
@@ -88,7 +88,7 @@ const confirmSignIn = async () => {
     const data = await CONFIRM_SIGN_IN({ challengeResponse });
     if (data.signInStep === "DONE") {
       await FETCH_INFO_USER_SESSION();
-      push({ path: "/" });
+      push({ path: "/organizations" });
     }
   } catch (error) {
     console.error(error);

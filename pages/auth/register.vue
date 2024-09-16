@@ -60,7 +60,7 @@ const signUp = async () => {
   try {
     const { nextStep } = await SIGN_UP(newUser);
     if (nextStep.signUpStep === "DONE") {
-      push("/");
+      push("/organizations");
     } else if (nextStep.signUpStep === "CONFIRM_SIGN_UP") {
       registerTabs.value = "tab-confirm-email";
       $toast.success(

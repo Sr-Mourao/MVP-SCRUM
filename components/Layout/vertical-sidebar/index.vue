@@ -28,7 +28,7 @@ sidebarMenu.value = sidebarItems as MenuItem[];
     class="leftSidebar"
     :rail="customizer.mini_sidebar"
     expand-on-hover
-    width="270"
+    width="300"
   >
     <!---Logo part -->
     <!---Logo part -->
