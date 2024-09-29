@@ -97,6 +97,8 @@ const confirmSignIn = async () => {
     loadingConfirmSignIn.value = false;
   }
 };
+
+console.log("testing deploy");
 </script>
 
 <template>
