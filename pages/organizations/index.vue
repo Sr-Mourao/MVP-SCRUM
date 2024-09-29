@@ -49,11 +49,7 @@ onMounted(async () => {
       :model-value="overlay"
       class="align-center justify-center"
     >
-      <v-progress-circular
-        color="primary"
-        size="64"
-        indeterminate
-      ></v-progress-circular>
+      <div class="loader"></div>
     </v-overlay>
     <div>
       <div v-if="userWithoutOrg">
@@ -68,3 +64,6 @@ onMounted(async () => {
     </div>
   </div>
 </template>
+<style lang="scss" scoped>
+@import "./organization.scss";
+</style>

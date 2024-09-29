@@ -9,6 +9,7 @@ const form = ref<VForm | null>(null);
 const rules = ref([(v: string) => !!v || "Campo Obrigatório"]);
 const newOrgs = ref("");
 const loadingBtn = ref(false);
+const overlay = ref(false);
 
 const saveOrg = async () => {
   if (form.value) {
@@ -19,6 +20,7 @@ const saveOrg = async () => {
   }
 
   loadingBtn.value = true;
+  overlay.value = true;
   try {
     const orgCreated: any = await CREATE_ORG(newOrgs.value);
     if (!orgCreated) {
@@ -32,11 +34,19 @@ const saveOrg = async () => {
     $toast.error("Ops... Houve algum erro");
   } finally {
     loadingBtn.value = false;
+    overlay.value = false;
   }
 };
 </script>
 <template>
   <div class="container-form-org">
+    <v-overlay
+      persistent
+      :model-value="overlay"
+      class="align-center justify-center"
+    >
+      <div class="loaderCreatedOrgs"></div>
+    </v-overlay>
     <div class="text-h2 text-center" style="color: #2e3247">
       Cadastro Nova Organização
     </div>
@@ -67,10 +77,6 @@ const saveOrg = async () => {
     </div>
   </div>
 </template>
-<style scoped>
-.container-form-org {
-  max-width: 644px;
-  margin-left: auto;
-  margin-right: auto;
-}
+<style lang="scss" scoped>
+@import "../../pages//organizations/organization.scss";
 </style>

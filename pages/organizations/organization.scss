@@ -1,0 +1,51 @@
+.container-form-org {
+  max-width: 644px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  color: #eee;
+  font-size: 25px;
+  clip-path: inset(0 3ch 0 0);
+  animation: l4 1s steps(4) infinite;
+}
+
+.loaderCreatedOrgs {
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  color: #eee;
+  font-size: 25px;
+  clip-path: inset(0 3ch 0 0);
+  animation: l4 1s steps(4) infinite;
+}
+
+.loader:before {
+  content: "Carregando Organizações...";
+}
+
+.loaderCreatedOrgs:before {
+  content: "Criando Organizações...";
+}
+
+@keyframes l4 {
+  to {
+    clip-path: inset(0 -1ch 0 0);
+  }
+}
+
+
+
+@media (max-width: 600px) {
+  .loader {
+    font-size: 15px;
+  }
+
+  .loaderCreatedOrgs {
+    font-size: 15px;
+  }
+}
