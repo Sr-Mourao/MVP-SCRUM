@@ -98,7 +98,6 @@ const confirmSignIn = async () => {
   }
 };
 
-console.log("testing deploy");
 </script>
 
 <template>
