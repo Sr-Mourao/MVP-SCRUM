@@ -33,6 +33,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
+      baseUrlApi: process.env.API_BASE_URL,
       userPoolId: process.env.AMPLIFY_USERPOOL_ID,
       userPoolClientId: process.env.AMPLIFY_WEBCLIENT_ID
     }

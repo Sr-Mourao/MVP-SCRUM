@@ -9,7 +9,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     const pinia = nuxtApp.$pinia as Pinia;
     const auth = useAuthStore(pinia);
 
-    // axios.defaults.baseURL = nuxtApp.$config.public.baseUrlApi;
+    axios.defaults.baseURL = nuxtApp.$config.public.baseUrlApi;
     axios.interceptors.request.use(
         async (config) => {
             const { tokens } = await fetchAuthSession();

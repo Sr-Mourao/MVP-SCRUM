@@ -1,4 +1,5 @@
 import { Amplify } from 'aws-amplify';
+import * as auth from '@aws-amplify/auth';
 
 export default defineNuxtPlugin(({$config}) => {
 
@@ -10,5 +11,11 @@ export default defineNuxtPlugin(({$config}) => {
             }
         }
     })
+
+    return {
+        provide: {
+            auth: auth
+        }
+    }
 
 })

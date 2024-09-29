@@ -1,14 +1,4 @@
 import {
-    autoSignIn,
-    signIn,
-    signOut,
-    signUp,
-    confirmSignUp,
-    confirmSignIn,
-    resetPassword,
-    updatePassword,
-    fetchUserAttributes,
-    confirmResetPassword,
     type SignInInput,
     type SignUpInput,
     type ConfirmSignInInput,
@@ -34,39 +24,46 @@ export const useAuthStore = defineStore({
     actions: {
 
         async SIGN_UP(newUser: SignUpInput) {
-            const data = await signUp(newUser)
+            const nuxtApp = useNuxtApp();
+            const data = await nuxtApp.$auth.signUp(newUser)
             return data
         },
 
         async CONFIRM_SIGN_UP(challengeResponse: ConfirmSignUpInput) {
-            const data = await confirmSignUp(challengeResponse)
+            const nuxtApp = useNuxtApp();
+            const data = await nuxtApp.$auth.confirmSignUp(challengeResponse)
             return data
         },
 
         async AUTO_SIGN_IN(){
-            await autoSignIn()
+            const nuxtApp = useNuxtApp();
+            await nuxtApp.$auth.autoSignIn()
         },
 
         async LOGIN({ username, password }: SignInInput) {
-            const data = await signIn({ username, password })
+            const nuxtApp = useNuxtApp();
+            const data = await nuxtApp.$auth.signIn({ username, password })
             return data
         },
 
         async CONFIRM_SIGN_IN(challengeResponse: ConfirmSignInInput) {
-            const { nextStep } = await confirmSignIn(challengeResponse)
+            const nuxtApp = useNuxtApp();
+            const { nextStep } = await nuxtApp.$auth.confirmSignIn(challengeResponse)
             return nextStep
         },
 
         async FETCH_INFO_USER_SESSION() {
+            const nuxtApp = useNuxtApp();
             this.isAuthenticated = true
             localStorage.setItem('loggedIn', JSON.stringify(true))
-            const user = await fetchUserAttributes();
+            const user = await nuxtApp.$auth.fetchUserAttributes();
             this.userSession = user
             localStorage.setItem('userSession', JSON.stringify(user))
         },
 
         async HANDLE_SIGN_OUT() {
-            await signOut();
+            const nuxtApp = useNuxtApp();
+            await nuxtApp.$auth.signOut();
             this.userSession = {},
                
                 this.isAuthenticated = false,
@@ -77,7 +74,8 @@ export const useAuthStore = defineStore({
         },
 
         async FORGOT_PASSWORD(username: string) {
-            const output = await resetPassword({ username });
+            const nuxtApp = useNuxtApp();
+            const output = await nuxtApp.$auth.resetPassword({ username });
             return this.HANDLE_RESET_PASSWORD_NEXT_STEPS(output)
         },
 
@@ -101,11 +99,13 @@ export const useAuthStore = defineStore({
             confirmationCode,
             newPassword
         }: ConfirmResetPasswordInput) {
-            await confirmResetPassword({ username, confirmationCode, newPassword });
+            const nuxtApp = useNuxtApp();
+            await nuxtApp.$auth.confirmResetPassword({ username, confirmationCode, newPassword });
         },
 
         async UPDATE_PASSWORD({ oldPassword, newPassword }: UpdatePasswordInput) {
-            await updatePassword({ oldPassword, newPassword });
+            const nuxtApp = useNuxtApp();
+            await nuxtApp.$auth.updatePassword({ oldPassword, newPassword });
         },
     }
 })

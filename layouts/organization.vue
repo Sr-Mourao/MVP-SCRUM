@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const customizer = useCustomizerStore();
 const { userSession } = useAuthStore();
+
 </script>
 <template>
   <div>
