@@ -39,7 +39,6 @@ const registerNewOrg = () => {
 };
 
 onMounted(async () => {
-  console.log($config.public.baseUrlApi);
   await loadOrganizations();
 });
 </script>
