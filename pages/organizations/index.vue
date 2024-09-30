@@ -4,7 +4,7 @@ definePageMeta({
 });
 
 const { userSession } = useAuthStore();
-const { $toast } = useNuxtApp();
+const { $toast, $config } = useNuxtApp();
 const { FETCH_ALL, FETCH_ORG_USER } = useorganizationStore();
 const userWithoutOrg = ref(false);
 const organizationsUserSession = ref([]);
@@ -39,6 +39,7 @@ const registerNewOrg = () => {
 };
 
 onMounted(async () => {
+  console.log($config.public.baseUrlApi);
   await loadOrganizations();
 });
 </script>
