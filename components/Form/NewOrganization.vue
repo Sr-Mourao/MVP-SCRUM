@@ -3,7 +3,7 @@ import type { VForm } from "vuetify/components/VForm";
 const { CREATE_ORG, CREATE_ORG_USER } = useorganizationStore();
 
 const emit = defineEmits(["load-organizations"]);
-
+const color = ref("#eeeeee");
 const { $toast } = useNuxtApp();
 const form = ref<VForm | null>(null);
 const rules = ref([(v: string) => !!v || "Campo Obrigatório"]);
@@ -22,7 +22,7 @@ const saveOrg = async () => {
   loadingBtn.value = true;
   overlay.value = true;
   try {
-    const orgCreated: any = await CREATE_ORG(newOrgs.value);
+    const orgCreated: any = await CREATE_ORG(newOrgs.value, color.value);
     if (!orgCreated) {
       $toast.error("Ops... Houve algum erro");
       return;
@@ -60,8 +60,24 @@ const saveOrg = async () => {
               >*</span
             ></v-label
           >
-
           <v-text-field v-model="newOrgs" :rules="rules"> </v-text-field>
+        </v-col>
+        <v-col cols="12">
+          <v-label
+            class="text-subtitle-1 font-weight-semibold pb-2 text-lightText"
+            >Selecione cor da organização</v-label
+          >
+          <div class="d-flex justify-center">
+            <v-color-picker
+              v-model="color"
+              hide-canvas
+              elevation="3"
+              hide-inputs
+              show-swatches
+              tile
+              width="500"
+            ></v-color-picker>
+          </div>
         </v-col>
       </v-row>
     </v-form>

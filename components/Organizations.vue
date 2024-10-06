@@ -1,16 +1,9 @@
 <script setup lang="ts">
-interface Organization {
-  id: string;
-  name: string;
-  user_count: number;
-  project_count: number;
-}
-
 defineProps<{
-  organizations: Organization[];
   actionsBtn: () => void;
 }>();
 
+const organizationStore = useorganizationStore();
 const { push } = useRouter();
 const organizationSelected = () => {
   push("/");
@@ -20,15 +13,17 @@ const organizationSelected = () => {
   <div class="text-h2 text-center" style="color: #2e3247">
     Suas Organizações
   </div>
-  <div v-for="(item, i) in organizations" :key="i">
+  <div v-for="(item, i) in organizationStore.allOrgs" :key="i">
     <v-card
-      append-icon="mdi-open-in-new"
+      append-icon="mdi-arrow-right-thick"
       @click="organizationSelected"
       max-width="644"
+      dark
       class="mx-auto my-5"
       rel="noopener"
       target="_blank"
       :title="item.name"
+      :color="item.color"
     >
       <template #prepend>
         <v-avatar color="secondary">

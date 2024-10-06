@@ -18,8 +18,9 @@ const loadOrganizations = async () => {
       userWithoutOrg.value = true;
       return;
     }
+    const org_ids = orgUser.organizations.map((e: any) => e.organization_id);
 
-    const data = await FETCH_ALL(orgUser.organizations);
+    const data = await FETCH_ALL(org_ids);
     organizationsUserSession.value = data;
   } catch (error) {
     console.error(error);
@@ -56,10 +57,7 @@ onMounted(async () => {
         <FormNewOrganization @load-organizations="loadOrgsAfterRegistration" />
       </div>
       <div v-else>
-        <Organizations
-          :organizations="organizationsUserSession"
-          :actions-btn="registerNewOrg"
-        />
+        <Organizations :actions-btn="registerNewOrg" />
       </div>
     </div>
   </div>
