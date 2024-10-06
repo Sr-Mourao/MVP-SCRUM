@@ -20,20 +20,23 @@ export const useorganizationStore = defineStore({
         }
       },
     actions: {
+        async FETCH_ORG_USER(id: string){
+            const nuxtApp = useNuxtApp();
+            const { data} = await nuxtApp.$axios.get(`/users/v1/${id}/organizations`);
+            if(data){
+                this.orgs_user = data.organizations
+            }
+            return data 
+        },
+
         async FETCH_ALL(ids: string[]) {
             const nuxtApp = useNuxtApp();
             const {data} = await nuxtApp.$axios.post('/organizations/v1/list-orgs', {
                 ids: ids
             });
+            console.log(data)
             this.organizations = data
             return data
-        },
-
-        async FETCH_ORG_USER(id: string){
-            const nuxtApp = useNuxtApp();
-            const { data} = await nuxtApp.$axios.get(`/users/v1/${id}/organizations`);
-            this.orgs_user = data.organizations
-            return data 
         },
 
         async CREATE_ORG(name: string, color: string) {
