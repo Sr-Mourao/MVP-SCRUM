@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const customizer = useCustomizerStore();
 const { userSession } = useAuthStore();
-
 </script>
 <template>
   <div>
@@ -15,7 +14,10 @@ const { userSession } = useAuthStore();
       ]"
     >
       <v-app-bar elevation="10">
-        <LayoutLogoRtlLogo />
+        <div class="d-flex justify-center font-weight-black">
+          <v-icon color="green-darken-2" icon="mdi-cow" size="large"></v-icon
+          >MMOUU
+        </div>
         <template v-slot:append>
           <div class="d-flex align-center mt-4 pb-6">
             <v-avatar size="40">

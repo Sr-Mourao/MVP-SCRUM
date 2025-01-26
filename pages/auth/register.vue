@@ -111,7 +111,14 @@ const confirmSignUp = async () => {
             max-width="450"
           >
             <v-card-item class="pa-sm-8">
-              <div class="d-flex justify-center py-4"><LayoutLogo /></div>
+              <div class="d-flex justify-center font-weight-black mb-3">
+                <v-icon
+                  color="green-darken-2"
+                  icon="mdi-cow"
+                  size="large"
+                ></v-icon
+                >MMOUU
+              </div>
               <v-tabs-window v-model="registerTabs">
                 <v-tabs-window-item value="tab-register">
                   <!-- <div class="text-h6 text-medium-emphasis text-center mb-6">Your Social Campaigns</div> -->

@@ -35,13 +35,19 @@ sidebarMenu.value = sidebarItems as MenuItem[];
     <v-locale-provider v-if="customizer.setRTLLayout" rtl>
       <div class="flex justify-center items-center">
         <div class="px-5 pt-3">
-          <LayoutLogoRtlLogo />
+          <div class="d-flex justify-center font-weight-black">
+            <v-icon color="green-darken-2" icon="mdi-cow" size="large"></v-icon
+            >MMOUU
+          </div>
         </div>
       </div>
     </v-locale-provider>
     <v-locale-provider v-else>
       <div class="px-5 pt-3">
-        <LayoutLogo />
+        <div class="d-flex justify-center font-weight-black">
+          <v-icon color="green-darken-2" icon="mdi-cow" size="large"></v-icon
+          >MMOUU
+        </div>
       </div>
     </v-locale-provider>
 

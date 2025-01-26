@@ -97,7 +97,6 @@ const confirmSignIn = async () => {
     loadingConfirmSignIn.value = false;
   }
 };
-
 </script>
 
 <template>
@@ -112,7 +111,14 @@ const confirmSignIn = async () => {
             max-width="550"
           >
             <v-card-item class="pa-sm-8">
-              <div class="d-flex justify-center mb-1"><LayoutLogo /></div>
+              <div class="d-flex justify-center font-weight-black mb-3">
+                <v-icon
+                  color="green-darken-2"
+                  icon="mdi-cow"
+                  size="large"
+                ></v-icon
+                >MMOUU
+              </div>
 
               <div class="d-flex align-center text-center mb-6">
                 <div

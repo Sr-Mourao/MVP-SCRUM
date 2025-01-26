@@ -26,12 +26,16 @@ watch(priority, (newPriority) => {
     >
       <v-locale-provider v-if="customizer.setRTLLayout" rtl>
         <div class="">
-          <LayoutLogoRtlLogo />
+          <div class="d-flex justify-center font-weight-black">
+            <v-icon color="green-darken-2" icon="mdi-cow" size="large"></v-icon
+            >MMOUU
+          </div>
         </div>
       </v-locale-provider>
       <v-locale-provider v-else>
         <div class="hidden-md-and-down mr-3">
-          <LayoutLogo />
+          <v-icon color="green-darken-2" icon="mdi-cow" size="large"></v-icon
+          >MMOUU
         </div>
       </v-locale-provider>
 

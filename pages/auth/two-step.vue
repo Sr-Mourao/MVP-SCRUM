@@ -47,7 +47,14 @@ const confirmResetPassword = async () => {
             max-width="455"
           >
             <v-card-item class="pa-sm-8">
-              <div class="d-flex justify-center py-4"><LayoutLogo /></div>
+              <div class="d-flex justify-center font-weight-black mb-3">
+                <v-icon
+                  color="green-darken-2"
+                  icon="mdi-cow"
+                  size="large"
+                ></v-icon
+                >MMOUU
+              </div>
               <p class="text-subtitle-1 text-center text-13">
                 Enviamos um código de verificação.
               </p>
